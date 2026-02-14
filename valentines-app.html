@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Te elegiría en todos los universos 💕</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pastel: { pink: '#f8d7da', rose: '#f5c6cb', blush: '#fce4ec', coral: '#e8a0a8', anatomical: '#c41e3a', stat: '#d4a5a5' },
+          },
+          fontFamily: { serif: ['Cormorant Garamond', 'serif'], sans: ['Quicksand', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'Quicksand', sans-serif; overflow-x: hidden; }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    /* Floating hearts */
+    .hearts-container { pointer-events: none; position: fixed; inset: 0; z-index: 0; overflow: hidden; }
+    .heart { position: absolute; font-size: 1.25rem; opacity: 0.6; animation: float 8s ease-in-out infinite; }
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
+    .heart:nth-child(2) { left: 25%; animation-delay: 1.5s; animation-duration: 9s; }
+    .heart:nth-child(3) { left: 40%; animation-delay: 0.5s; animation-duration: 6s; }
+    .heart:nth-child(4) { left: 55%; animation-delay: 2s; animation-duration: 8s; }
+    .heart:nth-child(5) { left: 70%; animation-delay: 0.8s; animation-duration: 7.5s; }
+    .heart:nth-child(6) { left: 85%; animation-delay: 1.2s; animation-duration: 6.5s; }
+    .heart:nth-child(7) { left: 15%; animation-delay: 3s; animation-duration: 10s; bottom: 10%; }
+    .heart:nth-child(8) { left: 60%; animation-delay: 2.5s; animation-duration: 8.5s; bottom: 15%; }
+    .heart:nth-child(9) { left: 35%; animation-delay: 1s; animation-duration: 9.5s; bottom: 20%; }
+    @keyframes float {
+      0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.4; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Bell curve glow */
+    .bell-glow { filter: drop-shadow(0 0 8px rgba(196, 30, 58, 0.3)); }
+
+    /* Heart rate spike */
+    .hr-spike { transition: transform 0.15s ease-out; }
+
+    /* Card lift */
+    .card-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-lift:active { transform: scale(0.98); }
+
+    /* Gradient bg */
+    .bg-romantic { background: linear-gradient(165deg, #fce4ec 0%, #f8d7da 25%, #f5c6cb 50%, #e8a0a8 75%, #fce4ec 100%); min-height: 100dvh; }
+    .bg-card { background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(252,228,236,0.6) 100%); backdrop-filter: blur(12px); }
+    @supports (padding: env(safe-area-inset-bottom)) {
+      body { padding-bottom: env(safe-area-inset-bottom); }
+    }
+  </style>
+</head>
+<body class="bg-romantic text-gray-800 antialiased">
+  <div class="hearts-container" aria-hidden="true">
+    <span class="heart">❤️</span><span class="heart">💕</span><span class="heart">❤️</span>
+    <span class="heart">💗</span><span class="heart">❤️</span><span class="heart">💕</span>
+    <span class="heart">💗</span><span class="heart">❤️</span><span class="heart">💕</span>
+  </div>
+
+  <!-- Pantalla inicial: Comenzar -->
+  <div id="screen-start" class="relative z-10 min-h-[100dvh] flex flex-col items-center justify-center px-6 py-8">
+    <div class="text-center max-w-sm">
+      <div class="flex justify-center gap-2 mb-6 bell-glow">
+        <svg class="w-12 h-12 text-[#c41e3a]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <svg class="w-10 h-10 text-[#c41e3a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8 6 4 8 4 12c0 4 3 8 8 8s8-4 8-8c0-4-4-6-8-10z"/></svg>
+      </div>
+      <p class="font-display text-2xl md:text-3xl text-[#8b2942] font-semibold mb-2">Estadísticamente significativo</p>
+      <p class="text-sm text-gray-600 mb-8">Un regalo con datos y latidos</p>
+      <button id="btn-comenzar" class="w-full py-4 px-6 rounded-2xl bg-[#c41e3a] text-white font-semibold text-lg shadow-lg shadow-[#c41e3a]/30 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 touch-manipulation" type="button">
+        Comenzar
+      </button>
+    </div>
+  </div>
+
+  <!-- Experiencia principal (oculta al inicio) -->
+  <div id="screen-main" class="relative z-10 min-h-[100dvh] hidden flex-col px-4 py-6 pb-10">
+    <!-- Header con fusión médico-estadística -->
+    <header class="text-center mb-4">
+      <div class="inline-flex items-center justify-center gap-1 rounded-full bg-white/70 px-4 py-2 shadow-sm">
+        <svg class="w-6 h-6 text-[#c41e3a]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 6 4 8 4 12c0 4 3 8 8 8s8-4 8-8c0-4-4-6-8-10z"/></svg>
+        <span class="text-[#c41e3a] font-semibold text-sm">σ</span>
+        <svg class="w-6 h-6 text-[#c41e3a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4v16l2-4 2 4 2-4 2 4V4"/><circle cx="16" cy="4" r="2"/></svg>
+        <svg class="w-8 h-5 text-[#c41e3a]/80" viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 20 Q10 20 20 8 Q30 0 40 4"/></svg>
+      </div>
+    </header>
+
+    <!-- Mensaje principal -->
+    <section class="bg-card rounded-3xl p-6 shadow-xl border border-white/50 mb-5 card-lift">
+      <p class="font-display text-xl md:text-2xl text-center text-[#6b2d3d] leading-relaxed italic">
+        Te elegiría en todos los universos. Feliz día del amor y la amistad, mi chiquita preciosa.
+      </p>
+    </section>
+
+    <!-- Calculadora de probabilidades -->
+    <section class="bg-card rounded-3xl p-5 shadow-xl border border-white/50 mb-5 card-lift">
+      <h2 class="font-display text-lg font-semibold text-[#8b2942] mb-3 flex items-center gap-2">
+        <span>📊</span> Calculadora de Probabilidades
+        <svg class="w-6 h-6 text-[#c41e3a]/60 ml-auto" viewBox="0 0 32 20" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 18 Q8 18 16 4 Q24 -6 32 2"/></svg>
+      </h2>
+      <p class="text-sm text-gray-600 mb-3">P(Amor Eterno | Nosotros) = ?</p>
+      <button id="btn-calcular" class="w-full py-3 rounded-xl bg-[#e8a0a8] text-[#5c1a24] font-semibold border border-[#c41e3a]/20 hover:bg-[#f5c6cb] transition-colors">
+        Calcular probabilidad
+      </button>
+      <div id="resultado-calc" class="mt-4 text-center hidden">
+        <p class="text-2xl font-bold text-[#c41e3a]">100%</p>
+        <p class="font-display text-lg text-[#8b2942]">Amor Eterno</p>
+        <p class="text-xs text-gray-500 mt-1">P(Amor Eterno | Nosotros) = 1.00</p>
+      </div>
+    </section>
+
+    <!-- Monitor de ritmo cardíaco -->
+    <section class="bg-card rounded-3xl p-5 shadow-xl border border-white/50 card-lift" id="section-hr">
+      <h2 class="font-display text-lg font-semibold text-[#8b2942] mb-3 flex items-center gap-2">
+        <span>❤️</span> Monitor de Ritmo Cardíaco
+      </h2>
+      <p class="text-sm text-gray-600 mb-3">Toca la pantalla para que suba el latido.</p>
+      <div class="bg-gray-900 rounded-2xl p-4 relative flex items-center justify-center min-h-[120px] select-none touch-none" id="hr-zone">
+        <svg id="ecg-svg" class="w-full h-24 text-[#c41e3a] relative z-10" viewBox="0 0 300 80" preserveAspectRatio="none">
+          <path id="ecg-path" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M0,40 L50,40 L60,40 L70,40 L80,40 L90,40 L300,40"/>
+        </svg>
+        <div id="hr-bpm" class="absolute bottom-2 right-3 text-white font-mono text-xl font-bold">72 <span class="text-xs font-normal">BPM</span></div>
+      </div>
+    </section>
+
+    <!-- Pequeño detalle sigma + corazón -->
+    <footer class="mt-6 text-center">
+      <p class="text-xs text-[#8b2942]/70 font-display">σ + ♥ = Para siempre</p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const screenStart = document.getElementById('screen-start');
+      const screenMain = document.getElementById('screen-main');
+      const btnComenzar = document.getElementById('btn-comenzar');
+      const btnCalcular = document.getElementById('btn-calcular');
+      const resultadoCalc = document.getElementById('resultado-calc');
+      const hrZone = document.getElementById('hr-zone');
+      const hrBpm = document.getElementById('hr-bpm');
+      const ecgPath = document.getElementById('ecg-path');
+
+      let heartRate = 72;
+      let hrInterval = null;
+
+      // Comenzar experiencia
+      btnComenzar.addEventListener('click', function () {
+        screenStart.classList.add('hidden');
+        screenMain.classList.remove('hidden');
+        screenMain.classList.add('flex');
+      });
+
+      // Calculadora: siempre 100% Amor Eterno
+      btnCalcular.addEventListener('click', function () {
+        resultadoCalc.classList.remove('hidden');
+        resultadoCalc.classList.add('animate-pulse');
+        setTimeout(function () { resultadoCalc.classList.remove('animate-pulse'); }, 1000);
+      });
+
+      var ecgNormal = 'M0,40 L50,40 L60,40 L70,40 L80,40 L90,40 L300,40';
+      var ecgSpike = 'M0,40 L50,40 L60,40 L65,40 L70,12 L75,40 L80,40 L90,40 L300,40';
+
+      function spikeHeartRate() {
+        heartRate = Math.min(140, heartRate + 18);
+        hrBpm.textContent = heartRate + ' BPM';
+        hrBpm.classList.add('hr-spike', 'scale-110');
+        ecgPath.setAttribute('d', ecgSpike);
+        ecgPath.setAttribute('stroke-width', '3');
+        setTimeout(function () {
+          hrBpm.classList.remove('scale-110');
+          ecgPath.setAttribute('stroke-width', '2');
+          ecgPath.setAttribute('d', ecgNormal);
+        }, 280);
+        if (hrInterval) clearInterval(hrInterval);
+        hrInterval = setInterval(function () {
+          heartRate = Math.max(72, heartRate - 2);
+          hrBpm.textContent = heartRate + ' BPM';
+          if (heartRate <= 72) clearInterval(hrInterval);
+        }, 400);
+      }
+
+      hrZone.addEventListener('touchstart', function (e) {
+        e.preventDefault();
+        spikeHeartRate();
+      });
+      hrZone.addEventListener('mousedown', function () {
+        spikeHeartRate();
+      });
+    })();
+  </script>
+</body>
+</html>
