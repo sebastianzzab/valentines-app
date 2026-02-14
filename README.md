@@ -18,3 +18,4 @@ git push -u origin main
 
 3. En GitHub: **Settings** → **Pages** → **Source**: "Deploy from a branch" → **Branch**: `main` → **Folder**: `/ (root)` → Save.
 4. Tu app estará en: `https://TU_USUARIO.github.io/TU_REPO/`
+# valentines-app
